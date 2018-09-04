@@ -11,7 +11,7 @@ script:
   - cmake -DCMAKE_BUILD_TYPE=Release .
   - cmake --build .
   - cmake --build . --target package
-  - doxygen Doxyfile 
+#  - doxygen Doxyfile 
 
 before_deploy: 
   - 'export _PROJECT_NAME="HW6L14-Matrix"'
