@@ -29,6 +29,6 @@ int main(){
     std::cout << x << ' ' << y << ' ' << v << '\n';
   }
   
-  
+ 
   return 0;
 }
