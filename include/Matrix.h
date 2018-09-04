@@ -1,8 +1,6 @@
 #pragma once
 
 #include <unordered_map>
-#include <vector>
-
 
  
 template <typename T, T defaulVal>
@@ -27,14 +25,14 @@ class Matrix{
     MatrixElement(Matrix<T, defaulVal>& matrix): 
           matrix(matrix){};
     
-    void operator=(const T& other){
+    auto& operator=(const T& other){
       const Point key = std::make_pair(matrix.rowNum,
             matrix.colNum);
       if(other == defaulVal)
         matrix.data.erase(key);
       else
         matrix.data[key] = other;
-      return;
+      return *this;
     }
     
     operator T() {
