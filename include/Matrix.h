@@ -72,6 +72,30 @@ class Matrix{
     
     Matrix(): helper(*this), element(*this) {};
     
+    Matrix(const Matrix& other): Matrix() {
+      data = other.data;
+    }
+    
+    Matrix(const Matrix&& other): Matrix(){
+      data = std::move(other.data);
+    }
+    
+    Matrix& operator=(const Matrix& other){
+      if(this != &other){
+        this->data = other.data;
+      }
+      return *this;
+    }
+    
+    Matrix& operator=(const Matrix&& other){
+      if(this != &other){
+        this->data = std::move(other.data);
+      }
+      return *this;
+    }
+    
+    ~Matrix() = default;        
+    
     auto& operator[](const int i){      
       rowNum = i;
       return this->helper;

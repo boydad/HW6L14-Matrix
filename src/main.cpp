@@ -1,10 +1,13 @@
 #include <iostream>
-
+#include <tuple>
 #include "Matrix.h"
 
 int main(){
 	
   Matrix<int, 0> m;
+  
+  Matrix<int, 0> m1 = m;
+  
   
   for(int i=0; i<10; i++)
     m[i][i] = i;
@@ -14,8 +17,7 @@ int main(){
   
   for(int i=1; i<9; i++){
     for(int j=1; j<9; j++){
-      int tmp = m[i][j];
-      std::cout << tmp << ' ';
+      std::cout << m[i][j] << ' ';
     }
     std::cout << '\n';
   }
@@ -28,7 +30,6 @@ int main(){
     const int v = e.second;
     std::cout << x << ' ' << y << ' ' << v << '\n';
   }
-  
- 
+
   return 0;
 }
