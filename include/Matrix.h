@@ -38,11 +38,9 @@ class Matrix{
     operator T() {
       const Point key = std::make_pair(matrix.rowNum,
             matrix.colNum);
-      const auto it = matrix.data.find(key);
-      if(it == matrix.data.end())
-        return defaulVal;
-      else
-        return it->second;      
+      
+      const auto it = matrix.data.find(key);  
+      return it == matrix.data.end() ? defaulVal : it->second;
     }
   };
   

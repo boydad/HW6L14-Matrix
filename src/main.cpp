@@ -4,10 +4,7 @@
 
 int main(){
 	
-  Matrix<int, 0> m;
-  
-  Matrix<int, 0> m1 = m;
-  
+  Matrix<int, 0> m;    
   
   for(int i=0; i<10; i++)
     m[i][i] = i;
