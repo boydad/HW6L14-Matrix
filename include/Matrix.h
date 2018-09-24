@@ -26,20 +26,15 @@ class Matrix{
           matrix(matrix){};
     
     auto& operator=(const T& other){
-      const Point key = std::make_pair(matrix.rowNum,
-            matrix.colNum);
       if(other == defaulVal)
-        matrix.data.erase(key);
+        matrix.data.erase(matrix.index);
       else
-        matrix.data[key] = other;
+        matrix.data[matrix.index] = other;
       return *this;
     }
     
     operator T() {
-      const Point key = std::make_pair(matrix.rowNum,
-            matrix.colNum);
-      
-      const auto it = matrix.data.find(key);  
+      const auto it = matrix.data.find(matrix.index);  
       return it == matrix.data.end() ? defaulVal : it->second;
     }
   };
@@ -53,22 +48,20 @@ class Matrix{
           matrix(matrix) {};
     
     auto operator[](const int columNum){  
-      matrix.colNum = columNum;
+      matrix.index.second = columNum;
       return matrix.element;
     }
   };
   
   
-  std::unordered_map<Point, T, PointHash> 
-        data;
+  std::unordered_map<Point, T, PointHash> data;
   MatrixRow helper;
   MatrixElement element;
-  int rowNum;
-  int colNum;
+  std::pair<int, int> index;
   
   public:
     
-    Matrix(): helper(*this), element(*this) {};
+    Matrix(): helper(*this), element(*this){};
     
     Matrix(const Matrix& other): Matrix() {
       data = other.data;
@@ -94,8 +87,8 @@ class Matrix{
     
     ~Matrix() = default;        
     
-    auto& operator[](const int i){      
-      rowNum = i;
+    auto& operator[](const int rowNum){      
+      index.first = rowNum;
       return this->helper;
     }
     
